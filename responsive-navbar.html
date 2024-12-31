@@ -14,7 +14,12 @@
 				src="logo-placeholder.png"
 				alt="company-x logo"
 			/>
-			<button class="menu-btn" aria-pressed="false" aria-label="Menu">
+			<button
+				class="menu-btn"
+				aria-pressed="false"
+				aria-expanded="false"
+				aria-label="Menu"
+			>
 				&#x2630;
 			</button>
 			<nav class="primary-nav-bar">
@@ -25,6 +30,7 @@
 							aria-haspopup="true"
 							aria-pressed="false"
 							aria-expanded="false"
+							aria-label="Press enter to navigate main menu 1. Press escape when navigating the menu to close and return to main menu 1"
 							><span>Main-item 1</span><span>+</span></a
 						>
 						<ul class="sub-menu sub-menu-1">
@@ -39,12 +45,13 @@
 							aria-haspopup="true"
 							aria-pressed="false"
 							aria-expanded="false"
+							aria-label="Press enter to navigate main menu 2. Press escape when navigating the menu to close and return to main menu 2"
 							><span>Main-item 2</span><span>+</span></a
 						>
 						<ul class="sub-menu sub-menu-2">
 							<li>
 								<strong>Sub-category 1</strong>
-								<ul>
+								<ul aria-label="Sub-category 1">
 									<li><a href="#">Sub-item 1</a></li>
 									<li><a href="#">Sub-item 2</a></li>
 									<li><a href="#">Sub-item 3</a></li>
@@ -52,7 +59,7 @@
 							</li>
 							<li>
 								<strong>Sub-category 2</strong>
-								<ul>
+								<ul aria-label="Sub-category 2">
 									<li><a href="#">Sub-item 1</a></li>
 									<li><a href="#">Sub-item 2</a></li>
 									<li><a href="#">Sub-item 3</a></li>
@@ -60,7 +67,7 @@
 							</li>
 							<li>
 								<strong>Sub-category 3</strong>
-								<ul>
+								<ul aria-label="Sub-category 3">
 									<li><a href="#">Sub-item 1</a></li>
 									<li><a href="#">Sub-item 2</a></li>
 									<li><a href="#">Sub-item 3</a></li>

@@ -10,6 +10,7 @@ const toggleMenuButton = () => {
 	navBar.classList.toggle("active");
 	menuBtn.innerHTML = isPressed ? "&#x2630;" : "&#x2716;";
 	menuBtn.setAttribute("aria-pressed", isPressed ? "false" : "true");
+	menuBtn.setAttribute("aria-expanded", isPressed ? "false" : "true");
 };
 menuBtn.addEventListener("click", toggleMenuButton);
 
@@ -19,7 +20,9 @@ const toggleSubMenu = (item) => {
 	item.setAttribute("aria-pressed", isPressed ? "false" : "true");
 	item.setAttribute("aria-expanded", isPressed ? "false" : "true");
 	item.querySelector("span:nth-child(2)").textContent = isPressed ? "+" : "-";
-	item.nextElementSibling.querySelector("a").focus();
+	if (window.innerWidth > 901 && !isPressed) {
+		item.nextElementSibling.querySelector("a").focus();
+	}
 };
 
 mainItems.forEach((item) => {
@@ -45,7 +48,7 @@ const handleEscapeKey = (e) => {
 };
 
 const handleFocusOut = (e) => {
-	if (!e.currentTarget.contains(e.relatedTarget)) {
+	if (window.innerWidth > 901 && !e.currentTarget.contains(e.relatedTarget)) {
 		e.currentTarget.classList.remove("active");
 		e.currentTarget.previousElementSibling.setAttribute(
 			"aria-pressed",
