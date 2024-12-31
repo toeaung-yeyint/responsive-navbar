@@ -4,6 +4,7 @@
 	box-sizing: border-box;
 }
 body {
+	font-family: "Open Sans", Helvetica, Arial, Lucida, sans-serif;
 	margin: 0;
 }
 header {
@@ -13,11 +14,32 @@ header {
 	background-color: #1a1a1a;
 	color: white;
 	padding: 20px;
+	position: relative;
 }
 .nav-bar-logo {
-	width: 150px;
+	width: 100px;
 	height: 40px;
-	object-fit: cover;
+	object-fit: contain;
+	object-position: left;
+}
+.menu-btn {
+	color: white;
+	background-color: transparent;
+	border: none;
+	padding: 0;
+	font-size: 24px;
+}
+.primary-nav-bar {
+	display: none;
+	background-color: #1a1a1a;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	width: 100%;
+	padding: 20px 0;
+}
+.primary-nav-bar.active {
+	display: block;
 }
 .primary-nav-bar ul {
 	list-style: none;
@@ -30,46 +52,39 @@ header {
 	display: block;
 	padding: 10px 20px;
 }
-.main-menu {
-	display: flex;
-	gap: 20px;
-	position: relative;
-	z-index: 2;
-}
-.main-menu-item a:focus {
+.primary-nav-bar a:hover,
+.primary-nav-bar a:focus {
 	outline: none;
 	background-color: #575757;
 }
-.main-menu-item > a:hover {
-	box-shadow: inset 0 -3px 0 gold;
+.main-menu {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+.main-menu-item a {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.main-menu-item a span:nth-child(2) {
+	padding: 0 5px;
 }
 .sub-menu {
 	display: none;
-	position: absolute;
 	background-color: #1a1a1a;
-	top: 0;
-	left: 50%;
-	transform: translateX(-50%);
-	width: min(calc(100vw - 200px), 800px);
-	padding: 60px 20px 20px 20px !important;
-	column-gap: 50px;
-	border-bottom-left-radius: 8px;
-	border-bottom-right-radius: 8px;
-	z-index: -1;
+	width: 100%;
 }
-.sub-menu li {
-	break-inside: avoid;
+.sub-menu.active {
+	display: block;
 }
 .sub-menu strong {
 	display: block;
 	padding: 10px 20px;
-	border-bottom: 1px solid gold;
+	border-bottom: 1px solid #575757;
 }
 .sub-menu a:hover {
 	background-color: #575757;
-}
-.main-menu-item:hover > .sub-menu {
-	display: block;
 }
 .nav-bar-btn {
 	background-color: gold;
@@ -78,7 +93,51 @@ header {
 	padding: 12px 20px;
 	border-radius: 8px;
 	cursor: pointer;
+	display: none;
 }
 .nav-bar-btn:hover {
 	background-color: white;
+}
+@media screen and (min-width: 901px) {
+	header {
+		position: relative;
+	}
+	.primary-nav-bar {
+		position: static;
+		display: block;
+		width: auto;
+		padding: 0;
+	}
+	.main-menu {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+	.sub-menu {
+		display: none;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		width: min(calc(100vw - 300px), 1000px);
+		padding: 20px !important;
+	}
+	.sub-menu li {
+		break-inside: avoid;
+	}
+	.sub-menu-1 {
+		column-count: 1;
+	}
+	.sub-menu-2 {
+		column-count: 3;
+	}
+	.main-menu-item:hover .sub-menu {
+		display: block;
+	}
+	.menu-btn,
+	.main-menu-item a span:nth-child(2) {
+		display: none;
+	}
+	.nav-bar-btn {
+		display: block;
+	}
 }

@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="responsive-navbar.css" />
-		<script src="responsive-navbar.js"></script>
+		<script defer src="responsive-navbar.js"></script>
 		<title>Responsive Navbar</title>
 	</head>
 	<body>
@@ -14,19 +14,34 @@
 				src="logo-placeholder.png"
 				alt="company-x logo"
 			/>
+			<button class="menu-btn" aria-pressed="false" aria-label="Menu">
+				&#x2630;
+			</button>
 			<nav class="primary-nav-bar">
 				<ul class="main-menu">
 					<li class="main-menu-item">
-						<a href="#">Item 1</a>
-						<ul class="sub-menu">
+						<a
+							href="#"
+							aria-haspopup="true"
+							aria-pressed="false"
+							aria-expanded="false"
+							><span>Main-item 1</span><span>+</span></a
+						>
+						<ul class="sub-menu sub-menu-1">
 							<li><a href="#">Sub-item 1</a></li>
 							<li><a href="#">Sub-item 2</a></li>
 							<li><a href="#">Sub-item 3</a></li>
 						</ul>
 					</li>
 					<li class="main-menu-item">
-						<a href="#">Item 2</a>
-						<ul class="sub-menu" style="column-count: 3">
+						<a
+							href="#"
+							aria-haspopup="true"
+							aria-pressed="false"
+							aria-expanded="false"
+							><span>Main-item 2</span><span>+</span></a
+						>
+						<ul class="sub-menu sub-menu-2">
 							<li>
 								<strong>Sub-category 1</strong>
 								<ul>
@@ -53,7 +68,9 @@
 							</li>
 						</ul>
 					</li>
-					<li class="main-menu-item"><a href="#">Item 3</a></li>
+					<li class="main-menu-item">
+						<a href="#">Main-item 3</a>
+					</li>
 				</ul>
 			</nav>
 			<button class="nav-bar-btn">Placeholder</button>
