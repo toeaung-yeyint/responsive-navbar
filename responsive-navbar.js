@@ -5,6 +5,9 @@ const mainMenuItemsWithSubMenu = document.querySelectorAll(
 );
 subMenuItems = document.querySelectorAll(".sub-menu");
 
+/**
+ * Toggles the visibility of a primary navigation bar and updates the ARIA attributes of menu button for accessibility.
+ */
 const toggleMenuButton = () => {
 	const isPressed = menuBtn.ariaPressed === "true";
 	navBar.classList.toggle("active");
@@ -13,6 +16,10 @@ const toggleMenuButton = () => {
 	menuBtn.setAttribute("aria-expanded", isPressed ? "false" : "true");
 };
 
+/**
+ * Toggles the visibility of a submenu and updates the ARIA attributes of main menu items for accessibility.
+ * @param {HTMLElement} item - The main menu item that was clicked to toggle the submenu.
+ */
 const toggleSubMenu = (item) => {
 	const isPressed = item.ariaPressed === "true";
 	item.nextElementSibling.classList.toggle("active");
@@ -24,6 +31,10 @@ const toggleSubMenu = (item) => {
 	}
 };
 
+/**
+ * Handles the Escape key press event to close a submenu.
+ * @param {KeyboardEvent} e - The keyboard event object.
+ */
 const handleEscapeKey = (e) => {
 	if (e.key === "Escape") {
 		e.currentTarget.classList.remove("active");
@@ -42,6 +53,13 @@ const handleEscapeKey = (e) => {
 	}
 };
 
+/**
+ * Handles the focus out event to close a submenu.
+ * This function checks if the window's inner width is greater than 901 pixels
+ * and if the related target is not a descendant of the current target (a sub menu).
+ * If both conditions are met, it close the submenu and updates the ARIA attributes of main menu items.
+ * @param {FocusEvent} e - The focus out event object.
+ */
 const handleFocusOut = (e) => {
 	if (window.innerWidth > 901 && !e.currentTarget.contains(e.relatedTarget)) {
 		e.currentTarget.classList.remove("active");
@@ -56,6 +74,13 @@ const handleFocusOut = (e) => {
 	}
 };
 
+/**
+ * Handles the resize event for the window. If the window's inner width is greater than 901 pixels,
+ * it removes the "active" class from the navigation bar, resets the menu button's inner HTML to a
+ * hamburger icon, and updates the ARIA attributes for accessibility. Additionally, it iterates
+ * through all main menu items with submenus, removes the "active" class from their submenus,
+ * resets the submenu toggle text to "+", and updates their ARIA attributes.
+ */
 const handleResize = () => {
 	if (window.innerWidth > 901) {
 		navBar.classList.remove("active");
