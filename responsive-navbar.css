@@ -95,7 +95,7 @@ header {
 	background-color: #575757;
 }
 .nav-bar-btn {
-	background-color: gold;
+	background-color: white;
 	font-weight: bold;
 	border: none;
 	padding: 12px 20px;
@@ -104,7 +104,7 @@ header {
 	display: none;
 }
 .nav-bar-btn:hover {
-	background-color: white;
+	background-color: gold;
 }
 main {
 	flex: 1;
@@ -139,17 +139,25 @@ footer a:hover {
 .footer-company-about {
 	display: flex;
 	flex-direction: column;
-	gap: 15px;
+	justify-content: center;
+	gap: 20px;
+}
+.footer-company-about a {
+	display: inline-block;
+	max-width: 200px;
 }
 .footer-company-about img {
-	display: block;
-	width: 150px;
+	width: 100%;
 	object-fit: contain;
 }
 .footer-links {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-	gap: 20px;
+	column-width: 120px;
+}
+.footer-links div {
+	break-inside: avoid;
+}
+.footer-links > div:not(:last-child) {
+	margin-bottom: 20px;
 }
 .footer-contact address {
 	margin: 5px 0;
@@ -171,26 +179,23 @@ footer a:hover {
 	line-height: 0;
 	padding: 3px;
 }
-.footer-social-media a:hover {
-	box-shadow: inset 0 -2px 0 gold;
-}
-.footer-social-media img {
+.footer-social-media svg {
 	display: inline-block;
 	width: 30px;
+	fill: white;
+}
+.footer-social-media svg:hover {
+	fill: gold;
 }
 .footer-copy-right {
-	background-color: #333333;
-	padding: 8px;
+	background-color: black;
+	padding: 20px 10px;
 	margin: 0 -20px;
 	text-align: center;
 }
 @media screen and (min-width: 901px) {
-	footer {
-		display: grid;
-		grid-template-columns: 1fr 2fr 1fr;
-	}
-	.footer-copy-right {
-		grid-column: 1 / -1;
+	header {
+		padding: 20px 50px;
 	}
 	.primary-nav-bar {
 		position: static;
@@ -233,5 +238,17 @@ footer a:hover {
 	}
 	.nav-bar-btn {
 		display: block;
+	}
+	footer {
+		display: grid;
+		grid-template-columns: 2fr 1fr auto;
+		padding: 30px 50px 0 50px;
+	}
+	.footer-company-about img {
+		order: 1;
+	}
+	.footer-copy-right {
+		margin: 0 -50px;
+		grid-column: 1 / -1;
 	}
 }
